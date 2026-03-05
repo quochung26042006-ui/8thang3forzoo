@@ -1,0 +1,296 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Chúc mừng ngày Quốc tế Phụ nữ 8/3</title>
+
+<style>
+
+/* Reset */
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+}
+
+body{
+font-family:'monospace', sans-serif;
+background-color:#f7f7f7;
+color:#333;
+}
+
+header{
+background-color:#FFB6C1;
+color:white;
+text-align:center;
+padding:30px;
+}
+
+header h1{
+font-size:3em;
+margin-bottom:10px;
+}
+
+header p{
+font-size:1.2em;
+}
+
+.main-idea{
+display:flex;
+flex-wrap:wrap;
+justify-content:center;
+padding:20px;
+width:100%;
+}
+
+/* khung trắng */
+
+.intro{
+background-color:white;
+margin:20px;
+padding:20px 20px 30px 20px;
+border-radius:10px;
+box-shadow:0 4px 8px rgba(0,0,0,0.1);
+width:300px;
+min-height:420px;
+text-align:center;
+display:flex;
+flex-direction:column;
+align-items:center;
+}
+
+/* ảnh */
+
+.intro img{
+width:100%;
+height:260px;
+object-fit:cover;
+border-radius:10px;
+cursor:pointer;
+transition:0.3s;
+}
+
+.intro img:hover{
+transform:scale(1.05);
+}
+
+/* chữ instagram */
+
+.insta-text{
+margin-top:15px;
+font-size:1.2em;
+color:#555;
+}
+
+/* khung link instagram */
+
+.insta-box{
+margin-top:10px;
+background-color:#FFB6C1;
+padding:8px 15px;
+border-radius:15px;
+}
+
+.insta-box a{
+text-decoration:none;
+color:white;
+font-weight:bold;
+}
+
+.insta-box a:hover{
+opacity:0.8;
+}
+
+/* 4 ảnh nằm ngang */
+
+.image-row{
+display:flex;
+justify-content:space-evenly;
+width:100%;
+flex-wrap:wrap;
+}
+
+/* ảnh chung */
+
+.big-image{
+width:100%;
+text-align:center;
+margin-top:20px;
+}
+
+.big-image img{
+width:600px;
+border-radius:10px;
+}
+
+/* footer */
+
+footer{
+background-color:#FFB6C1;
+color:white;
+text-align:center;
+padding:10px;
+margin-top:20px;
+}
+
+/* ===== LÁ THƯ ===== */
+
+.overlay{
+display:none;
+position:fixed;
+top:0;
+left:0;
+width:100%;
+height:100%;
+background:rgba(0,0,0,0.6);
+justify-content:center;
+align-items:center;
+}
+
+.letter{
+background:#fff8fb;
+width:420px;
+padding:35px;
+border-radius:18px;
+text-align:center;
+box-shadow:0 0 15px rgba(0,0,0,0.2);
+position:relative;
+}
+
+.letter h2{
+color:#ff4d88;
+margin-bottom:15px;
+}
+
+.letter p{
+line-height:1.6;
+}
+
+.close{
+position:absolute;
+top:10px;
+right:15px;
+font-size:20px;
+cursor:pointer;
+}
+
+</style>
+</head>
+
+<body>
+
+<header>
+<h1>Chúc mừng ngày Quốc tế Phụ nữ 8/3</h1>
+<p>Từ ba con người chúc bốn con thú có một ngày 8/3 vui vẻ</p>
+</header>
+
+<div class="main-idea">
+
+<div class="image-row">
+
+<div class="intro">
+<img src="C:\Users\ASUS\Downloads\Zoo\Image\SOC.jpg" onclick="showLetter(1)">
+<p class="insta-text">Instagram:</p>
+<div class="insta-box">
+<a href="https://www.instagram.com/_hquyn.eqpt_/">Hạnh Quyên</a>
+</div>
+</div>
+
+<div class="intro">
+<img src="C:\Users\ASUS\Downloads\Zoo\Image\Quynh.jpg" onclick="showLetter(2)">
+<p class="insta-text">Instagram:</p>
+<div class="insta-box">
+<a href="https://www.instagram.com/tdquynhhhhh/">Diễm Quỳnh</a>
+</div>
+</div>
+
+<div class="intro">
+<img src="C:\Users\ASUS\Downloads\Zoo\Image\BO.jpg" onclick="showLetter(3)">
+<p class="insta-text">Instagram:</p>
+<div class="insta-box">
+<a href="https://www.instagram.com/ncmaizz___/">Châu Mai</a>
+</div>
+</div>
+
+<div class="intro">
+<img src="C:\Users\ASUS\Downloads\Zoo\Image\PET.jpg" onclick="showLetter(4)">
+<p class="insta-text">Instagram:</p>
+<div class="insta-box">
+<a href="https://www.instagram.com/_duckling.2206/">Kim Ngân</a>
+</div>
+</div>
+
+</div>
+
+<div class="big-image">
+<img src="C:\Users\ASUS\Downloads\Anh Quân.jpg" alt="Ảnh chung">
+</div>
+
+</div>
+
+<footer>
+<p>&copy; CHUNG MINH LA ZOO</p>
+</footer>
+
+<!-- KHUNG LÁ THƯ -->
+
+<div class="overlay" id="overlay">
+
+<div class="letter">
+
+<div class="close" onclick="closeLetter()">✖</div>
+
+<h2 id="title"></h2>
+
+<p id="content"></p>
+
+</div>
+
+</div>
+
+<script>
+
+const letters = {
+
+1:{
+title:"Gửi Hạnh Quyên 💐",
+content:"Chúc bạn luôn vui vẻ, học tốt và đạt được những điều mình mong muốn. Mong rằng mỗi ngày của bạn đều tràn ngập niềm vui."
+},
+
+2:{
+title:"Gửi Diễm Quỳnh 🌸",
+content:"Chúc bạn luôn mạnh mẽ, tự tin và gặp thật nhiều may mắn. Hy vọng bạn sẽ luôn giữ nụ cười thật tươi."
+},
+
+3:{
+title:"Gửi Châu Mai 🌷",
+content:"Chúc bạn có thật nhiều niềm vui trong cuộc sống, học tập thật tốt và luôn giữ được sự dễ thương của mình."
+},
+
+4:{
+title:"Gửi Kim Ngân 🌹",
+content:"Chúc bạn luôn hạnh phúc, gặp nhiều điều tốt đẹp và có thật nhiều kỷ niệm đáng nhớ."
+}
+
+}
+
+function showLetter(num){
+
+document.getElementById("overlay").style.display="flex"
+
+document.getElementById("title").innerText=letters[num].title
+document.getElementById("content").innerText=letters[num].content
+
+}
+
+function closeLetter(){
+
+document.getElementById("overlay").style.display="none"
+
+}
+
+</script>
+
+</body>
+</html>
