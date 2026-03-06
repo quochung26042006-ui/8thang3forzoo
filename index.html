@@ -146,33 +146,85 @@ height:100%;
 background:rgba(0,0,0,0.6);
 justify-content:center;
 align-items:center;
+z-index:999;
 }
 
-.letter{
-background:#fff8fb;
-width:420px;
-padding:35px;
-border-radius:18px;
-text-align:center;
-box-shadow:0 0 15px rgba(0,0,0,0.2);
+/* quyển sổ */
+
+.book{
 position:relative;
+width:500px;
+height:420px;
+perspective:1200px;
 }
 
-.letter h2{
-color:#ff4d88;
-margin-bottom:15px;
+/* trang */
+
+.page{
+position:absolute;
+width:100%;
+height:100%;
+background:#fff8fb;
+border-radius:18px;
+padding:35px;
+box-shadow:0 0 15px rgba(0,0,0,0.2);
+transform-origin:left;
+transition:transform 0.8s;
+backface-visibility:hidden;
+}
+.page p{
+line-height:1.7;
+font-size:16px;
+text-align:left;
+white-space:pre-line; /* cho phép xuống dòng */
 }
 
-.letter p{
-line-height:1.6;
+/* thứ tự trang */
+
+#page1{ z-index:3; }
+#page2{ z-index:2; }
+#page3{ z-index:1; }
+
+.page2{
+background:#fff3f8;
+}
+
+.page3{
+background:#ffeaf2;
+}
+
+/* hiệu ứng lật */
+
+.flip{
+transform:rotateY(-180deg);
+}
+
+/* nút */
+
+.page-buttons{
+position:absolute;
+bottom:15px;
+right: 20px;
+}
+
+.page-buttons button{
+background:#FFB6C1;
+border:none;
+padding:6px 12px;
+border-radius:10px;
+cursor:pointer;
+margin:5px;
+color:white;
 }
 
 .close{
 position:absolute;
-top:10px;
-right:15px;
-font-size:20px;
+top:-35px;
+right:-10px;
+font-size:26px;
 cursor:pointer;
+color:white;
+z-index:10;
 }
 
 </style>
@@ -201,7 +253,7 @@ cursor:pointer;
 <img src="Image/SOC.jpg" onclick="showLetter(2)">
 <p class="insta-text">Instagram:</p>
 <div class="insta-box">
-<a href="https://www.instagram.com/_hquyn.eqpt_/">Hạnh Quyên</a>
+<a href="https://www.instagram.com/_hquyn.eqpt_">Hạnh Quyên</a>
 </div>
 </div>
 
@@ -224,7 +276,7 @@ cursor:pointer;
 </div>
 
 <div class="big-image">
-<img src="Image/Anh Quân.jpg" alt="Ảnh chung">
+<img src="Image/Anh Quân.jpg">
 </div>
 
 </div>
@@ -233,19 +285,50 @@ cursor:pointer;
 <p>&copy; CHUNG MINH LA ZOO</p>
 </footer>
 
-<!-- KHUNG LÁ THƯ -->
+<!-- LÁ THƯ -->
 
 <div class="overlay" id="overlay">
 
-<div class="letter">
+<div class="book">
 
 <div class="close" onclick="closeLetter()">✖</div>
 
-<h2 id="title"></h2>
+<div class="page" id="page1">
 
-<p id="content"></p>
+<h2 id="title"></h2>
+<p id="content1"></p>
+
+<div class="page-buttons">
+<button onclick="nextPage()">Trang sau ➜</button>
+</div>
 
 </div>
+
+<div class="page page2" id="page2">
+
+<h2>💌</h2>
+<p id="content2"></p>
+
+<div class="page-buttons">
+<button onclick="prevPage()">⬅ Trang trước</button>
+<button onclick="nextPage2()">Trang sau ➜</button>
+</div>
+
+</div>
+
+<div class="page page3" id="page3">
+
+<h2>🌸 Lời chúc</h2>
+<p id="content3"></p>
+
+<div class="page-buttons">
+<button onclick="prevPage2()">⬅ Trang trước</button>
+</div>
+
+</div>
+
+</div>
+<div class="close" onclick="closeLetter()">✖</div>
 
 </div>
 
@@ -255,22 +338,57 @@ const letters = {
 
 1:{
 title:"Gửi Hạnh Quyên 💐",
-content:"Chúc bạn luôn vui vẻ, học tốt và đạt được những điều mình mong muốn. Mong rằng mỗi ngày của bạn đều tràn ngập niềm vui."
+p1:`Chúc bạn một ngày 8/3 thật vui vẻ.
+Hy vọng hôm nay bạn sẽ nhận được thật nhiều niềm vui.
+Cảm ơn vì đã luôn mang lại năng lượng tích cực.
+Mong rằng những ngày sắp tới sẽ thật nhẹ nhàng.
+Chúc bạn luôn giữ được nụ cười thật tươi.
+Chúc mọi dự định của bạn đều thành công.
+Hy vọng bạn sẽ có thật nhiều kỷ niệm đẹp.
+Luôn mạnh mẽ và tự tin nhé.
+Cảm ơn vì đã là một người bạn tuyệt vời.
+Chúc bạn luôn hạnh phúc.`,
+p2:`Một ngày nào đó khi nhìn lại,
+hy vọng bạn sẽ thấy mình đã đi rất xa.
+Không phải vì may mắn,
+mà vì bạn đã cố gắng rất nhiều.
+Mong rằng mọi khó khăn rồi sẽ qua.
+Những điều tốt đẹp sẽ luôn ở phía trước.
+Hãy luôn tin vào bản thân mình.
+Vì bạn xứng đáng với những điều tuyệt vời.
+Chúc bạn thật nhiều niềm vui.
+Và thật nhiều tiếng cười.`,
+p3:`Cuộc sống có thể đôi lúc mệt mỏi.
+Nhưng mong rằng bạn luôn tìm được niềm vui nhỏ.
+Một bản nhạc hay.
+Một buổi chiều yên bình.
+Một cuộc trò chuyện vui vẻ.
+Một ngày nhiều năng lượng.
+Một nụ cười bất chợt.
+Một điều tốt đẹp bất ngờ.
+Chúc bạn luôn bình an.
+Happy Women's Day 🌸`
 },
 
 2:{
 title:"Gửi Diễm Quỳnh 🌸",
-content:"Chúc bạn luôn mạnh mẽ, tự tin và gặp thật nhiều may mắn. Hy vọng bạn sẽ luôn giữ nụ cười thật tươi."
+p1:"Chúc bạn luôn mạnh mẽ và tự tin.",
+p2:"Mong rằng mọi điều tốt đẹp sẽ đến với bạn.",
+p3:"Happy Women's Day 💐"
 },
 
 3:{
 title:"Gửi Châu Mai 🌷",
-content:"Chúc bạn có thật nhiều niềm vui trong cuộc sống, học tập thật tốt và luôn giữ được sự dễ thương của mình."
+p1:"Chúc bạn luôn giữ được nụ cười dễ thương.",
+p2:"Mong rằng mọi dự định của bạn đều thành công.",
+p3:"Chúc bạn 8/3 thật vui 🌷"
 },
 
 4:{
 title:"Gửi Kim Ngân 🌹",
-content:"Chúc bạn luôn hạnh phúc, gặp nhiều điều tốt đẹp và có thật nhiều kỷ niệm đáng nhớ."
+p1:"Chúc bạn luôn hạnh phúc và vui vẻ.",
+p2:"Hy vọng bạn sẽ có thật nhiều kỷ niệm đẹp.",
+p3:"Chúc bạn một ngày 8/3 thật ý nghĩa 🌹"
 }
 
 }
@@ -280,14 +398,39 @@ function showLetter(num){
 document.getElementById("overlay").style.display="flex"
 
 document.getElementById("title").innerText=letters[num].title
-document.getElementById("content").innerText=letters[num].content
+document.getElementById("content1").innerText=letters[num].p1
+document.getElementById("content2").innerText=letters[num].p2
+document.getElementById("content3").innerText=letters[num].p3
+
+resetPages()
 
 }
 
 function closeLetter(){
-
 document.getElementById("overlay").style.display="none"
+}
 
+/* lật trang */
+
+function nextPage(){
+document.getElementById("page1").classList.add("flip")
+}
+
+function prevPage(){
+document.getElementById("page1").classList.remove("flip")
+}
+
+function nextPage2(){
+document.getElementById("page2").classList.add("flip")
+}
+
+function prevPage2(){
+document.getElementById("page2").classList.remove("flip")
+}
+
+function resetPages(){
+document.getElementById("page1").classList.remove("flip")
+document.getElementById("page2").classList.remove("flip")
 }
 
 </script>
