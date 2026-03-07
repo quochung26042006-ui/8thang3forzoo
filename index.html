@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="vi">
 <head>
@@ -226,7 +227,121 @@ cursor:pointer;
 color:white;
 z-index:10;
 }
+.big-image{
+display:flex;
+justify-content:center;
+align-items:center;
+gap:40px;
+margin-top:40px;
+flex-wrap:wrap;
+}
 
+/* ảnh */
+
+.big-image img{
+width:520px;
+border-radius:10px;
+}
+
+.big-image{
+display:flex;
+justify-content:center;
+margin-top:40px;
+}
+
+/* trang giấy */
+
+.paper{
+display:flex;
+align-items:center;
+justify-content:center;
+gap:40px;
+
+background:white;
+padding:40px;
+border-radius:12px;
+box-shadow:0 6px 15px rgba(0,0,0,0.15);
+}
+
+/* ảnh */
+
+.paper img{
+width:520px;
+border-radius:10px;
+}
+
+/* trang giấy */
+
+.paper{
+display:flex;
+align-items:center;
+justify-content:center;
+gap:50px;
+
+background:linear-gradient(145deg,#fffdf7,#ffeef5);
+padding:60px;
+
+border-radius:20px;
+
+box-shadow:
+0 15px 35px rgba(0,0,0,0.2),
+0 5px 10px rgba(0,0,0,0.1);
+
+border:2px solid #ffd6e6;
+
+position:relative;
+}
+
+/* trang trí góc giấy */
+
+.paper::before,
+.paper::after{
+content:"";
+position:absolute;
+width:90px;
+height:90px;
+background:#ffd6e6;
+opacity:0.25;
+border-radius:50%;
+}
+
+.paper::before{
+top:-30px;
+left:-30px;
+}
+
+.paper::after{
+bottom:-30px;
+right:-30px;
+}
+
+/* ảnh */
+
+.paper img{
+width:520px;
+border-radius:12px;
+
+box-shadow:
+0 10px 25px rgba(0,0,0,0.25);
+}
+
+/* chữ trên giấy */
+
+.paper-text{
+width:230px;
+
+font-size:30px;
+line-height:1.7;
+
+text-align:center;
+font-family:'Georgia', serif;
+font-style:italic;
+color:#FFB6C1;
+
+display:flex;
+align-items:center;
+justify-content:center;
+}
 </style>
 </head>
 
@@ -234,7 +349,7 @@ z-index:10;
 
 <header>
 <h1>Chúc mừng ngày Quốc tế Phụ nữ 8/3</h1>
-<p>Từ ba con người chúc bốn con thú có một ngày 8/3 vui vẻ</p>
+<p>Từ ba con người chúc bốn con thú có một ngày 8/3 vui vẻ, dù không có ai là phụ nữ</p>
 </header>
 
 <div class="main-idea">
@@ -276,7 +391,24 @@ z-index:10;
 </div>
 
 <div class="big-image">
+
+<div class="paper">
+
+<div class="paper-text">
+"chẳng phải phép màu,<br>
+tại sao chúng ta gặp nhau"
+</div>
+
 <img src="Image/Anh Quân.jpg">
+
+<div class="paper-text">
+"cảm ơn người<br>
+đã thức cùng tôi"
+</div>
+
+</div>
+
+</div>
 </div>
 
 </div>
@@ -284,6 +416,15 @@ z-index:10;
 <footer>
 <p>&copy; CHUNG MINH LA ZOO</p>
 </footer>
+<audio id="music" loop>
+<source src="Music/Phép Màu (Đàn cá gỗ OST) - MAYDAYs ft. Minh Tốc  Offical MV.mp3" type="audio/mpeg">
+</audio>
+
+<script>
+document.body.addEventListener("click", function(){
+document.getElementById("music").play();
+});
+</script>
 
 <!-- LÁ THƯ -->
 
@@ -306,7 +447,7 @@ z-index:10;
 
 <div class="page page2" id="page2">
 
-<h2>💌</h2>
+<h2></h2>
 <p id="content2"></p>
 
 <div class="page-buttons">
@@ -318,7 +459,7 @@ z-index:10;
 
 <div class="page page3" id="page3">
 
-<h2>🌸 Lời chúc</h2>
+<h2></h2>
 <p id="content3"></p>
 
 <div class="page-buttons">
@@ -337,58 +478,43 @@ z-index:10;
 const letters = {
 
 1:{
-title:"Gửi Hạnh Quyên 💐",
-p1:`Chúc bạn một ngày 8/3 thật vui vẻ.
-Hy vọng hôm nay bạn sẽ nhận được thật nhiều niềm vui.
-Cảm ơn vì đã luôn mang lại năng lượng tích cực.
-Mong rằng những ngày sắp tới sẽ thật nhẹ nhàng.
-Chúc bạn luôn giữ được nụ cười thật tươi.
-Chúc mọi dự định của bạn đều thành công.
-Hy vọng bạn sẽ có thật nhiều kỷ niệm đẹp.
-Luôn mạnh mẽ và tự tin nhé.
-Cảm ơn vì đã là một người bạn tuyệt vời.
-Chúc bạn luôn hạnh phúc.`,
-p2:`Một ngày nào đó khi nhìn lại,
-hy vọng bạn sẽ thấy mình đã đi rất xa.
-Không phải vì may mắn,
-mà vì bạn đã cố gắng rất nhiều.
-Mong rằng mọi khó khăn rồi sẽ qua.
-Những điều tốt đẹp sẽ luôn ở phía trước.
-Hãy luôn tin vào bản thân mình.
-Vì bạn xứng đáng với những điều tuyệt vời.
-Chúc bạn thật nhiều niềm vui.
-Và thật nhiều tiếng cười.`,
-p3:`Cuộc sống có thể đôi lúc mệt mỏi.
-Nhưng mong rằng bạn luôn tìm được niềm vui nhỏ.
-Một bản nhạc hay.
-Một buổi chiều yên bình.
-Một cuộc trò chuyện vui vẻ.
-Một ngày nhiều năng lượng.
-Một nụ cười bất chợt.
-Một điều tốt đẹp bất ngờ.
-Chúc bạn luôn bình an.
-Happy Women's Day 🌸`
+title:"Hãy luôn rực rõ như hoa xuân nhé - Trần Diễm Quỳnh 🌸",
+p1:`From Huỳnh Anh Quân.
+Chúc Qy ngày 8/3 vui vẻ, hạnh phúc, mong em sẽ có một người để 4 chữ tế “ưu tiên” em nha!`,
+p2:`From Nguyễn Thanh Nam 
+Chúc Quỳnh một ngày 8/3 trước hết là thật vui vẻ, sau đó là sớm tìm được người thật sự quan tâm, nâng niu và trân trọng bản thân. Hi vọng rằng việc học của Quỳnh thật trôi chảy và mọi việc Quỳnh làm đều sẽ hoàn thành thật suôn sẻ, đạt được thành công`,
+p3:`From Dương Quốc Hưng.
+Chúc Quỳnh khờ có một ngày 8/3 sẽ luôn có được những điều tốt đẹp nhất, hãy cứ luôn là qyqy và dần dần trở thành phiên bản tốt nhất của bản thân, chúc khờ sẽ luôn kiểm soát tốt được mọi việc xảy đến và suôn sẻ với các dự định của mình trong tương lai, chúc Quỳnh lúc nào cũng phải tràn ngập niềm vui và không bị stress ghé thăm nữa nha   `
 },
 
 2:{
-title:"Gửi Diễm Quỳnh 🌸",
-p1:"Chúc bạn luôn mạnh mẽ và tự tin.",
-p2:"Mong rằng mọi điều tốt đẹp sẽ đến với bạn.",
-p3:"Happy Women's Day 💐"
+title:"Hãy luôn nắng động như nắng hạ nhé - Đặng Hồng Hạnh Quyên ☀️",
+p1:`From Huỳnh Anh Quân.
+Chúc Sóc có một ngày 8/3 đẳng cấp, ý nghĩa nhất cuộc đời. Luôn luôn xinh đẹp, giữ một tâm thế ngoài lạnh trong “khùng” và lan tỏa năng lượng tích cực đến mọi người xung quanh nha!`,
+p2:`From Nguyễn Thanh Nam 
+Chúc Quyên một ngày 8/3 trước hết là thiệt nhiều sức khỏe để có thể làm được những điều bản thân mong muốn và hoàn thành các nguyện vọng của mình, kể cả tình cảm học tập hay bất kì điều gì. Sau đó mong Quyên sẽ luôn năng động và luôn là người truyền năng lượng tích cực đến mọi người xung quanh.`,
+p3:`From Dương Quốc Hưng.
+Chúc Quyên khùng có một ngày 8/3 trước hết là phải thư giãn, chill girl, không bị áp lực học hành và mọi thứ xung quanh đè lên bản thân, chúc cho mọi điều đến với khùng luôn vui vẻ như cách em cười mất kiểm soát trong cái sở thú, chúc cho khùng sẽ luôn thành công trong học tập nha. `
 },
 
 3:{
-title:"Gửi Châu Mai 🌷",
-p1:"Chúc bạn luôn giữ được nụ cười dễ thương.",
-p2:"Mong rằng mọi dự định của bạn đều thành công.",
-p3:"Chúc bạn 8/3 thật vui 🌷"
+title:"Hãy luôn dịu dàng như gió thu nhé - Nguyễn Châu Mai 🍁",
+p1:`From Huỳnh Anh Quân.
+Nhiều khi hạt nhài là một điểm mạnh, chúc cho chú Bò hạt nhài của sở thú có một ngày 8/3 trọn vẹn, hạnh phúc, đang vất vả kiếm danh phận thì sẽ được một anh tử tế, giỏi toán đến hốt để bằng bạn bạn bè.`, 
+p2:`From Nguyễn Thanh Nam 
+Chúc cốt một ngày 8/3 trước hết là nhận được nhiều điều khiến bản thân hạnh phúc. Sau đó, mong cốt sẽ luôn tin vào bản thân và không bị tác động tiêu cực bởi lời nói hay hành động của người khác. Hi vọng rằng việc học hay tình cảm của cốt sẽ không như đồ thị hàm sin_muôn trùng trắc trở mà sẽ như đồ thị hàm số bậc nhất đồng biến_luôn tiến lên trên nhé.`,
+p3:`From Dương Quốc Hưng.
+Chúc Mai ngố có một ngày 8/3 hạnh phúc, không bị lạc lối trong tình yêu, không bị toán học dắt đi mất, chúc Mai luôn giữ được cho mình những cái năng lượng tích cực, hài hước để mang đến cho mọi người xung quanh, chúc Mai sẽ sớm khẳng định được bản thân để cho ba mẹ biết mình là ai nha.  `
 },
 
 4:{
-title:"Gửi Kim Ngân 🌹",
-p1:"Chúc bạn luôn hạnh phúc và vui vẻ.",
-p2:"Hy vọng bạn sẽ có thật nhiều kỷ niệm đẹp.",
-p3:"Chúc bạn một ngày 8/3 thật ý nghĩa 🌹"
+title:"Hãy luôn nhẹ nhàng như tuyết đông nhé - Trần Kim Ngân ❄️",
+p1:`From Huỳnh Anh Quân.
+Chúc Pet ngày 8/3 ngày càng vui vẻ, xinh đẹp, học giỏi, giữ cho mình một tinh thần mạnh mẽ như cách em “var” cả thế giới nha!`,
+p2:`From Nguyễn Thanh Nam 
+Chúc Ngân một ngày 8/3 trước hết là luôn nhận được nhiều điều tích cực. Để từ đó, hi vọng Ngân sẽ luôn giữ được cá tính mạnh mẽ, năng lượng và chất riêng của bản thân. Chúc Ngân thật nhiều niềm vui, nhiều may mắn và đạt được mọi nguyện vọng của bản thân.`,
+p3:`From Dương Quốc Hưng.
+Chúc Ngân gia trưởng có một ngày 8/3 vui vẻ, chúc Ngân sẽ không bị toán hành hạ, đừng vượt đèn đỏ, luôn giữ được độ bình tĩnh trong mọi việc như cách em ở trên sân, chúc em sớm tìm được điểm mạnh của bản thân, giữ được chất riêng - ngoài lạnh trong nóng của bản thân, mang nhiều câu chuyện đến hơn nha  `
 }
 
 }
